@@ -23,10 +23,10 @@ COPY conf/default.conf /etc/nginx/conf.d/default.conf
 # Premission website
 
 # TODO enlever plus tard avec les volumes
-RUN mkdir -p /var/www/html 
+RUN mkdir -p /var/www/wordpress 
 
-RUN chmod 755 /var/www/html
+RUN chmod 755 /var/www/wordpress
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/wordpress
 
 CMD ["nginx", "-g", "daemon off;"]

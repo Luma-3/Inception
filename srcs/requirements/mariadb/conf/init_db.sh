@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# MariaDB
+# Init Mariadb
 
-# # User For MariaDB
-# chown -R mysql:mysql /var/lib/mysql /var/run/mysqld /var/log/mariadb
-
-# # Start MariaDB
-
-# su -s /bin/bash -c "mysqld &" mysql
+mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 # service mysql start
-mysqld --initialize &
+mysqld &
 
 while ! mysqladmin ping --silent; do
 	sleep 1
