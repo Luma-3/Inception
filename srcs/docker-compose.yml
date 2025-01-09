@@ -6,3 +6,10 @@ services:
     ports:
       - "443:443"
     restart: on-failure
+
+  mariadb:
+    user: "mysql"
+    build:
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    restart: on-failure

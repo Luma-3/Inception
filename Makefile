@@ -7,12 +7,15 @@ $(NAME):
 	docker-compose -f srcs/docker-compose.yml up -d --build
 
 stop:
-	docker-compose down
+	docker-compose -f srcs/docker-compose.yml down
 
 clean: stop
-	docker-compose rm
+	docker-compose -f srcs/docker-compose.yml rm
 
-fclean: clean
-	docker rmi $(NAME)
+# fclean: clean
+# 	docker rmi $(NAME)
 
-re: fclean all
+debug:
+	docker-compose -f srcs/docker-compose.yml up -d --build --verbose
+
+re: clean all

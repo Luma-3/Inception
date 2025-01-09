@@ -1,6 +1,10 @@
 FROM alpine:3.18
 
-RUN apk update && apk add -f nginx openssl
+RUN apk update && apk add -f nginx openssl coreutils
+
+# Nginx user
+
+RUN adduser -D -G www-data www-data
 
 # SSL certificate
 
@@ -23,6 +27,6 @@ RUN mkdir -p /var/www/html
 
 RUN chmod 755 /var/www/html
 
-# RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
-CMD ["nginx", "-g", "deamon off;"]
+CMD ["nginx", "-g", "daemon off;"]
