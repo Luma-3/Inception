@@ -12,10 +12,10 @@ stop:
 clean: stop
 	docker-compose -f srcs/docker-compose.yml down
 
-# fclean: clean
-# 	docker rmi $(NAME)
+fclean: clean
+	docker-compose -f srcs/docker-compose.yml down --volumes --rmi all
 
 debug:
 	docker-compose -f srcs/docker-compose.yml up -d --build --verbose
 
-re: clean all
+re: fclean all

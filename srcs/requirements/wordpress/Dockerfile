@@ -16,4 +16,12 @@ WORKDIR /var/www/wordpress
 
 COPY conf/www.conf /etc/php81/php-fpm.d/www.conf
 
+COPY conf/wp-config.php /tmp/wp-config.php
+
+COPY conf/entrypoint.sh /tmp/entrypoint.sh
+
+RUN chmod +x /tmp/entrypoint.sh
+
+ENTRYPOINT ["/tmp/entrypoint.sh"]
+
 CMD ["php-fpm81", "-F"]
