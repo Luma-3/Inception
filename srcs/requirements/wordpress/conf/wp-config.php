@@ -60,6 +60,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
 
 /**#@-*/
 
+
 /**
  * WordPress database table prefix.
  *
@@ -90,6 +91,11 @@ define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+define( 'WP_HOME', getenv('WP_HOME') );
+define( 'WP_SITEURL', getenv('WP_SITEURL') );
+
+
+define( 'WP_INSTALLING', true );
 
 
 /* That's all, stop editing! Happy publishing. */

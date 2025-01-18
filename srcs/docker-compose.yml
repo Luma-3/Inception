@@ -22,8 +22,8 @@ services:
       - inception
     volumes:
       - mariadb:/var/lib/mysql
-    expose:
-      - "3306"
+    ports:
+      - "3306:3306"
     user: "mysql"
     env_file: .env
     restart: on-failure
