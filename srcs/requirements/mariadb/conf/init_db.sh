@@ -2,9 +2,14 @@
 
 # Init Mariadb
 
-# mariadb-install-db --user=mysql --datadir=/var/lib/mysql --skip-test-db
 
-mysql_upgrade
+# DB_ALREADY_EXISTS=`mysql -u root -e "SHOW DATABASES" | grep ${SQL_DATABASE}`
+
+# if [ -n "$DB_ALREADY_EXISTS" ]; then
+# 	echo "Database already exists"
+# else
+# 	mariadb-install-db --user=mysql --datadir=/var/lib/mysql --skip-test-db
+# fi
 
 # service mysql start
 mysqld &
