@@ -1,6 +1,6 @@
 FROM alpine:3.18
 
-RUN apk update && apk add -f wget php81 mariadb-client php81-fpm php81-mysqli php81-phar
+RUN apk update && apk add -f wget php81 mariadb-client php81-fpm php81-mysqli php81-phar php81-iconv
 
 
 RUN wget https://wordpress.org/latest.tar.gz
