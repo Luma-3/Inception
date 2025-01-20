@@ -1,8 +1,12 @@
 FROM alpine:3.18
 
-RUN apk update && apk add -f wget php81 mariadb-client php81-fpm php81-mysqli
+RUN apk update && apk add -f wget php81 mariadb-client php81-fpm php81-mysqli php81-phar
+
 
 RUN wget https://wordpress.org/latest.tar.gz
+
+# install wp-cli
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /tmp/wp-cli.phar && chmod +x /tmp/wp-cli.phar
 
 RUN adduser -D -G www-data www-data
 
