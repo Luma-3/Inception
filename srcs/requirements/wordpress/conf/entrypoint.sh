@@ -1,16 +1,16 @@
 #!/bin/sh
 
 
-# while ! nc -z wordpress 3306; do
-# 	echo "Waiting for MySQL to be ready..."
-# 	sleep 1
-# done
+while ! mariadb-admin ping --silent --host=mariadb --port=3306 ; do
+	echo "MariaDB is not ready yet, retrying..."
+	sleep 1
+done
 
-mv /tmp/wp-config.php /var/www/wordpress/wp-config.php
+# mv /tmp/wp-config.php /var/www/wordpress/wp-config.php
 
-# if [ ! -f /var/www/wordpress/wp-config.php ]; then
-# 	mv /tmp/wp-config.php /var/www/wordpress/wp-config.php
-# fi
+if [ ! -f /var/www/wordpress/wp-config.php ]; then
+	mv /tmp/wp-config.php /var/www/wordpress/wp-config.php
+fi
 
 /tmp/wp-cli.phar core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_USER --admin_password=$WP_AMDIN_PASS --admin_email=$WP_ADMIN_MAIL --allow-root
 
