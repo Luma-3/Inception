@@ -22,8 +22,6 @@ services:
       - inception
     volumes:
       - mariadb:/var/lib/mysql
-    ports:
-      - "3306:3306"
     user: "mysql"
     env_file: .env
     restart: on-failure
@@ -49,17 +47,18 @@ volumes:
     driver: local
     driver_opts:
       type: 'none'
-      device: /home/vagrant/wordpress # TODO replace by login user
+      device: /home/jbrousse/wordpress
       o: 'bind'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
-      device: /home/vagrant/mariadb # TODO replace by login user
+      device: /home/jbrousse/mariadb
       o: 'bind'
 
 networks:
   inception:
     name: inception
     driver: bridge
+
   
